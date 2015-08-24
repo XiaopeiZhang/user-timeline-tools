@@ -91,10 +91,10 @@ def addUser(conn, tweet, user_type, user_id) :
                 user_id,
                 "", # name
                 "", # fullname
-                "", # followers
-                "", # friends
-                "", # favourites
-                "", # statuses
+                "0", # followers
+                "0", # friends
+                "0", # favourites
+                "0", # statuses
                 "", # time_zone
             ]
         elif user_type == "reply":
@@ -102,10 +102,10 @@ def addUser(conn, tweet, user_type, user_id) :
                 tweet["in_reply_to_user_id"],
                 "", # name
                 "", # fullname
-                "", # followers
-                "", # friends
-                "", # favourites
-                "", # statuses
+                "0", # followers
+                "0", # friends
+                "0", # favourites
+                "0", # statuses
                 "", # time_zone
             ]
         try :
@@ -245,6 +245,7 @@ def addUserMentions(conn, tweet) :
                 mention["indices"][1]
         ]
 
+        mention_id = '0'
         try :
             cursor.execute(mentions_query, mention_values)
             conn.commit()
